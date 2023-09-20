@@ -1,3 +1,5 @@
+# 计科1914 0306224401 惠骁
+
 address_dict = {"小明": "122334455", "小黄": "122334455",
                 "小刚": "122334455", "小李": "122334455",
                 "小王": "122334455", "小宋": "122334455", }
@@ -41,32 +43,32 @@ if __name__ == '__main__':
         except Exception:
             print("请输入数字")
 
-            # 3.10新特性
-            # match i:
-            #     case 1:
-            #         query()
-            #     case 2:
-            #         add()
-            #     case 3:
-            #         deleteAll()
-            #     case 4:
-            #         show()
-            #     case 5:
-            #         break
-            #     case _:
-            #         print("请输入正确数字")
+        # 3.10新特性
+        match number:
+            case 1:
+                query()
+            case 2:
+                add()
+            case 3:
+                deleteAll()
+            case 4:
+                show()
+            case 5:
+                break
+            case _:
+                print("请输入正确数字")
 
-            # 旧版本
-        if number == 1:
-            query()
-        elif number == 2:
-               add()
-        elif number == 3:
-            deleteAll()
-        elif number == 4:
-            show()
-        elif number == 5:
-                # break
-            exit()
-        else:
-            print("请输入正确的数字")
+        # 旧版本
+        # if number == 1:
+        #     query()
+        # elif number == 2:
+        #     add()
+        # elif number == 3:
+        #     deleteAll()
+        # elif number == 4:
+        #     show()
+        # elif number == 5:
+        #     # break
+        #     exit()
+        # else:
+        #     print("请输入正确的数字")

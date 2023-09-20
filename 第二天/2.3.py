@@ -1,3 +1,5 @@
+# 计科1914 0306224401 惠骁
+
 import random
 
 x = random.randint(1, 100)

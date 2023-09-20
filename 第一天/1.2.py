@@ -1,3 +1,5 @@
+# 计科1914 0306224401 惠骁
+
 try:
     x = float(input("第一个数字x："))
     y = float(input("第一个数字x："))

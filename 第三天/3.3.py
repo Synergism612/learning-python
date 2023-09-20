@@ -1,5 +1,6 @@
-import random
+# 计科1914 0306224401 惠骁
 
+import random
 
 balls = list(range(1, 10))
 daizi = [[], [], []]

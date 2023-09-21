@@ -40,8 +40,9 @@ if __name__ == '__main__':
     while 1:
         try:
             number = int(input("请输入指令"))
-        except Exception:
-            print("请输入数字")
+        except ValueError:
+            print("这不是个数字")
+            continue
 
         # 3.10新特性
         match number:

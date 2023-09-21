@@ -3,11 +3,11 @@
 import random
 
 balls = list(range(1, 10))
-daizi = [[], [], []]
-
-# 3/3/3随机分配
 print(balls)
 random.shuffle(balls)
+
+# 3/3/3随机分配
+daizi = [[], [], []]
 
 for ball in balls:
     if ball % 3 == 0:

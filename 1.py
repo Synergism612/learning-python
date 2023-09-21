@@ -37,6 +37,3 @@ for i in range(0,275,25):
 
      # 延迟2秒
     time.sleep(2)
-
-
-

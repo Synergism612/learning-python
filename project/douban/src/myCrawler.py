@@ -4,7 +4,7 @@ import requests
 import bs4
 import re
 
-from douban.src.dataBase import MyDB
+from project.douban.src.dataBase import MyDB
 
 
 # 链接

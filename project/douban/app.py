@@ -3,8 +3,8 @@ from flask_cors import CORS
 
 import json
 
-from douban.src.dataBase import MyDB
-from douban.src.myServer import MyServer
+from project.douban.src.dataBase import MyDB
+from project.douban.src.myServer import MyServer
 
 # 创建Flask应用程序实例
 app = Flask(__name__)

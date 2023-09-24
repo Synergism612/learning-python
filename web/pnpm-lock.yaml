@@ -17,6 +17,9 @@ dependencies:
   echarts:
     specifier: ^5.4.3
     version: 5.4.3
+  echarts-wordcloud:
+    specifier: ^2.1.0
+    version: 2.1.0(echarts@5.4.3)
   element-plus:
     specifier: ^2.3.14
     version: 2.3.14(vue@3.2.47)
@@ -29,9 +32,6 @@ dependencies:
   vue:
     specifier: ^3.2.47
     version: 3.2.47
-  vue-echarts:
-    specifier: ^6.6.1
-    version: 6.6.1(echarts@5.4.3)(vue@3.2.47)
   vue-router:
     specifier: ^4.1.6
     version: 4.1.6(vue@3.2.47)
@@ -2690,6 +2690,14 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
+  /echarts-wordcloud@2.1.0(echarts@5.4.3):
+    resolution: {integrity: sha512-Kt1JmbcROgb+3IMI48KZECK2AP5lG6bSsOEs+AsuwaWJxQom31RTNd6NFYI01E/YaI1PFZeueaupjlmzSQasjQ==}
+    peerDependencies:
+      echarts: ^5.0.1
+    dependencies:
+      echarts: 5.4.3
+    dev: false
+
   /echarts@5.4.3:
     resolution: {integrity: sha512-mYKxLxhzy6zyTi/FaEbJMOZU1ULGEQHaeIeuMR5L+JnJTpz+YR03mnnpBhbR4+UYJAgiXgpyTVLffPAjOTLkZA==}
     dependencies:
@@ -4332,10 +4340,6 @@ packages:
       jsesc: 0.5.0
     dev: true
 
-  /resize-detector@0.3.0:
-    resolution: {integrity: sha512-R/tCuvuOHQ8o2boRP6vgx8hXCCy87H1eY9V5imBYeVNyNVpuL9ciReSccLj2gDcax9+2weXy3bc8Vv+NRXeEvQ==}
-    dev: false
-
   /resolve-dir@1.0.1:
     resolution: {integrity: sha512-R7uiTjECzvOsWSfdM0QKFNBVFcK27aHOUwdvK53BcW8zqnGdYp0Fbj82cy54+2A4P2tFM22J5kRfe1R+lM/1yg==}
     engines: {node: '>=0.10.0'}
@@ -4897,23 +4901,6 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.47
-    dev: false
-
-  /vue-echarts@6.6.1(echarts@5.4.3)(vue@3.2.47):
-    resolution: {integrity: sha512-EpreTzlNeJ+eaUn0AhXEmKJk98xJGecgTqAdyZovoXWnhTxnlW2HuBM0ei3y8rLw1JCUabf8/sYvxjlr8SzBKQ==}
-    requiresBuild: true
-    peerDependencies:
-      '@vue/composition-api': ^1.0.5
-      echarts: ^5.4.1
-      vue: ^2.6.12 || ^3.1.1
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-    dependencies:
-      echarts: 5.4.3
-      resize-detector: 0.3.0
-      vue: 3.2.47
-      vue-demi: 0.13.11(vue@3.2.47)
     dev: false
 
   /vue-eslint-parser@9.1.1(eslint@8.38.0):

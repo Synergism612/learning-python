@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, Router } from 'vue-router';
-import Index from '@/views/Index.vue';
+import IndexVue from '@/views/Index.vue';
+import GraphicVue from '@/views/Graphic .vue';
 
 const router: Router = createRouter({
   history: createWebHashHistory(),
@@ -7,7 +8,12 @@ const router: Router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: Index
+      component: IndexVue
+    },
+    {
+      path: '/graphic',
+      name: 'graphic',
+      component: GraphicVue
     }
   ]
 });

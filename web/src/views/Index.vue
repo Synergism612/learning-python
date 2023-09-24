@@ -1,69 +1,111 @@
 <template>
-  <div class="common-layout">
-    <el-container>
-      <el-aside width="200px">
-        <h1>控制台</h1>
-        <el-menu
-          default-active="2"
-          class="el-menu-vertical-demo"
-          @open="handleOpen"
-          @close="handleClose"
+  <el-table
+    :data="tableData"
+    style="width: 100%"
+    stripe
+    size="small"
+  >
+    <el-table-column prop="id" label="排名" />
+    <el-table-column fixed prop="movie" label="电影名" width="250" />
+    <el-table-column prop="year" label="年份" />
+    <el-table-column prop="directors" label="导演" />
+    <el-table-column prop="types" label="类型" />
+    <el-table-column prop="grade" label="评分" />
+    <el-table-column prop="votes" label="评分人数" />
+    <el-table-column fixed="right" label="简介" width="120">
+      <template #default="scope">
+        <el-button
+          link
+          type="primary"
+          size="small"
+          @click="click(scope.row.summary)"
         >
-          <el-menu-item index="1">
-            <span>Navigator Two</span>
-          </el-menu-item>
-        </el-menu>
-      </el-aside>
-      <el-main>
-        <div ref="chart" style="height: 600px"></div>
-      </el-main>
-    </el-container>
+          查看
+        </el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+  <div class="example-pagination-block">
+    <el-pagination
+      layout="prev, pager, next"
+      :total="total"
+      @current-change="change"
+    />
   </div>
+  <el-drawer v-model="drawer" title="简介" :with-header="true">
+    <br />
+    <span style="font-size: 20px">{{ data }}</span>
+  </el-drawer>
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, onMounted } from 'vue';
-import * as echarts from 'echarts';
+import { defineComponent, onMounted, ref } from 'vue';
+import { get } from '../axios/api';
+
+interface DataType {
+  total: number;
+  data: TableType[];
+}
+
+interface TableType {
+  id: string;
+  movie: string;
+  year: string;
+  directors: string;
+  types: string;
+  grade: string;
+  votes: string;
+  summary: string;
+}
 
 export default defineComponent({
-  name: 'IndexView',
+  name: 'CutlineComponents',
   props: {},
   setup: () => {
-    const chart = ref(null);
+    const drawer = ref(false);
+    const data = ref<string>('');
+    const total = ref(1);
+    const tableData = ref<TableType[]>([
+      {
+        id: '1',
+        movie: '2',
+        year: '3',
+        directors: '',
+        types: '',
+        grade: '',
+        votes: '',
+        summary: ''
+      }
+    ]);
     onMounted(() => {
-      const myChart = echarts.init(chart.value);
-      const option = {
-        title: {
-          text: 'ECharts 入门示例'
-        },
-        tooltip: {},
-        legend: {
-          data: ['销量']
-        },
-        xAxis: {
-          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'] // 你需要的数据
-        },
-        yAxis: {},
-        series: [
-          {
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20] // 你需要的数据
-          }
-        ]
-      };
-      myChart.setOption(option);
+      getData(1);
     });
-    const handleOpen = (key: string, keyPath: string[]) => {
-      console.log(key, keyPath);
+    const getData = (n: number) => {
+      get('/all/' + n)
+        .then(res => {
+          tableData.value = (res as unknown as DataType).data;
+          total.value = (res as unknown as DataType).total;
+        })
+        .catch(() => {
+          console.log('错误');
+        });
     };
-    const handleClose = (key: string, keyPath: string[]) => {
-      console.log(key, keyPath);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const click = (summary: string) => {
+      data.value = summary;
+      drawer.value = true;
     };
-    return { chart, handleOpen, handleClose };
+    const change = (value: number) => {
+      getData(value);
+    };
+    return { total, drawer, tableData, click, data, change };
   },
   components: {}
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.demo-tabs {
+  width: 100%;
+}
+</style>

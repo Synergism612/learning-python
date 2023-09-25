@@ -5,13 +5,13 @@
     stripe
     size="small"
   >
-    <el-table-column prop="id" label="排名" />
-    <el-table-column fixed prop="movie" label="电影名" width="250" />
-    <el-table-column prop="year" label="年份" />
-    <el-table-column prop="directors" label="导演" />
-    <el-table-column prop="types" label="类型" />
-    <el-table-column prop="grade" label="评分" />
-    <el-table-column prop="votes" label="评分人数" />
+    <el-table-column prop="id" label="排名"/>
+    <el-table-column fixed prop="movie" label="电影名" width="250"/>
+    <el-table-column prop="year" label="年份"/>
+    <el-table-column prop="directors" label="导演"/>
+    <el-table-column prop="types" label="类型"/>
+    <el-table-column prop="grade" label="评分"/>
+    <el-table-column prop="votes" label="评分人数"/>
     <el-table-column fixed="right" label="简介" width="120">
       <template #default="scope">
         <el-button
@@ -33,14 +33,14 @@
     />
   </div>
   <el-drawer v-model="drawer" title="简介" :with-header="true">
-    <br />
+    <br/>
     <span style="font-size: 20px">{{ data }}</span>
   </el-drawer>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
-import { get } from '../axios/api';
+import {defineComponent, onMounted, ref} from 'vue';
+import {get} from '@/axios/api';
 
 interface DataType {
   total: number;
@@ -59,7 +59,7 @@ interface TableType {
 }
 
 export default defineComponent({
-  name: 'CutlineComponents',
+  name: 'IndexView',
   props: {},
   setup: () => {
     const drawer = ref(false);
@@ -98,14 +98,12 @@ export default defineComponent({
     const change = (value: number) => {
       getData(value);
     };
-    return { total, drawer, tableData, click, data, change };
+    return {total, drawer, tableData, click, data, change};
   },
   components: {}
 });
 </script>
 
 <style scoped>
-.demo-tabs {
-  width: 100%;
-}
+
 </style>

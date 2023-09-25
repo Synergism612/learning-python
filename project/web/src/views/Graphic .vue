@@ -41,11 +41,11 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, onMounted } from 'vue';
+import {ref, defineComponent, onMounted} from 'vue';
 import * as echarts from 'echarts';
 import 'echarts-wordcloud';
 
-import { get } from '../axios/api';
+import {get} from '@/axios/api';
 
 interface key_value {
   key: string[];
@@ -53,7 +53,7 @@ interface key_value {
 }
 
 export default defineComponent({
-  name: 'CutlineComponents',
+  name: 'GraphicView',
   props: {},
   setup: () => {
     const chart = ref<HTMLDivElement>(document.createElement('div'));
@@ -77,7 +77,7 @@ export default defineComponent({
             fontSize: 22
           }
         },
-        tooltip: { show: true }, //配置提示框组件
+        tooltip: {show: true}, //配置提示框组件
         series: [
           {
             //数据系列及其配置
@@ -86,7 +86,7 @@ export default defineComponent({
             sizeRange: [40, 120], //设置数据大小范围
             textRotation: [0, 45, 90, 135, -45, -90], //设置文字倾斜角度
             gridSize: 20, //设置文字之间的间距
-            autoSize: { enable: true, minSize: 5 }, //设置文字的自动大小
+            autoSize: {enable: true, minSize: 5}, //设置文字的自动大小
             textStyle: {
               normal: {
                 color: function () {
@@ -386,14 +386,11 @@ export default defineComponent({
           break;
       }
     };
-    return { chart, handleSelect };
+    return {chart, handleSelect};
   },
   components: {}
 });
 </script>
 
 <style scoped>
-.demo-tabs {
-  width: 100%;
-}
 </style>
